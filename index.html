@@ -1,272 +1,483 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Prenik Shah | Portfolio &amp; Music</title>
-  <meta name="description" content="Official website of Prenik Shah — Unity AR/VR Developer &amp; Music Artist.">
-  <meta name="keywords" content="Prenik Shah, AR Developer, VR Developer, Unity, C#, 3D Mathematics, Music Artist, Plutomen">
-
-  <!-- Open Graph / Facebook / WhatsApp -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Prenik Shah | Portfolio &amp; Music">
-  <meta property="og:description" content="Experienced AR/VR developer focused on creating engaging interactive experiences and official music releases.">
-  <meta property="og:image" content="Portfolio/Images/PSLogo.jpg">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Prenik Shah | Portfolio &amp; Music">
-  <meta name="twitter:description" content="Experienced AR/VR developer focused on creating engaging interactive experiences and official music releases.">
-  <meta name="twitter:image" content="Portfolio/Images/PSLogo.jpg">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/jpeg" href="./assets/PSLogo-wZuh9iJO.jpg">
-  <!-- Tailwind CSS CDN for Portfolio styling -->
+  <meta charset="UTF-8" />
+  <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PS Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <!-- Main Stylesheet -->
-  <script type="module" crossorigin src="./assets/index-CwW94la-.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-CfWzOH_H.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    #video-modal.hidden,
+    #mobile-menu.hidden {
+      display: none;
+    }
+  </style>
 </head>
+
 <body class="bg-slate-50 antialiased text-slate-700">
-  <div id="app" class="app-container">
-    
-    <!-- TOP NAVIGATION TAB HEADER -->
-    <header class="top-nav-bar">
-      <div class="nav-inner">
-        <a href="#" class="nav-brand">Prenik Shah</a>
-        
-        <div class="top-tab-group">
-          <button id="tab-professional" class="top-tab-btn active">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-            <span>Professional</span>
+  <!-- Header -->
+  <header class="sticky top-0 bg-slate-50/80 backdrop-blur-md z-20 border-b border-slate-200">
+    <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex-shrink-0">
+          <a href="#" class="text-xl font-bold text-slate-800 hover:text-indigo-600 transition-colors">
+            Prenik Shah
+          </a>
+        </div>
+        <div class="hidden md:flex items-baseline space-x-4">
+          <a href="#projects"
+            class="text-slate-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Projects</a>
+          <a href="#about"
+            class="text-slate-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+        </div>
+        <div class="md:hidden">
+          <button id="mobile-menu-button"
+            class="inline-flex items-center justify-center p-2 rounded-md text-slate-600 hover:text-indigo-600 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+            aria-controls="mobile-menu" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke-width="1.5" stroke="currentColor" class="block h-6 w-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5">
+              </path>
+            </svg>
+            <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke-width="1.5" stroke="currentColor" class="hidden h-6 w-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
           </button>
-          <button id="tab-music" class="top-tab-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-            <span>Music</span>
-          </button>
         </div>
       </div>
-    </header>
-
-    <!-- MAIN CONTENT AREA -->
-    <main class="main-content">
-
-      <!-- ==========================================
-           TAB 1: PROFESSIONAL PORTFOLIO VIEW
-           ========================================== -->
-      <div id="view-professional" class="view-section">
-        <div class="main-inner">
-          
-          <!-- PROFESSIONAL HERO BANNER CARD (SAME CARD STYLE AS MUSIC PAGE HERO) -->
-          <div class="channel-hero">
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-              <div class="hero-avatar-wrapper">
-                <img src="./assets/PSLogo-wZuh9iJO.jpg" alt="Prenik Shah Profile" class="hero-avatar">
-                <span class="live-dot" title="Active Developer"></span>
-              </div>
-              <div class="hero-details">
-                <h1 class="hero-title">Prenik Shah</h1>
-                <p class="hero-handle">Unity Developer - Plutomen</p>
-                <p class="hero-desc">
-                  Experienced AR/VR developer focused on creating engaging and meaningful interactive experiences. Strong in C#, 3D mathematics, performance optimization, and exploring emerging XR technologies.
-                </p>
-                
-                <div class="artist-social-links">
-                  <a href="tel:+919409419734" class="social-btn phone" title="Call: +91 9409419734" aria-label="Call">
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                  </a>
-                  <a href="mailto:shahprenik@gmail.com" class="social-btn email" title="Email: shahprenik@gmail.com" aria-label="Email">
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                  </a>
-                  <a href="https://github.com/prenikshah/" target="_blank" rel="noopener noreferrer" class="social-btn github" title="GitHub" aria-label="GitHub">
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                  </a>
-                  <a href="https://www.linkedin.com/in/prenikshah" target="_blank" rel="noopener noreferrer" class="social-btn linkedin" title="LinkedIn" aria-label="LinkedIn">
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- CONTENT BAR (MATCHING MUSIC PAGE CONTENT BAR) -->
-          <div class="content-bar">
-            <div class="content-title">
-              <h2>My Work</h2>
-            </div>
-
-            <!-- PROJECTS FILTERS -->
-            <div id="project-filters" class="flex items-center flex-wrap gap-2"></div>
-          </div>
-
-          <!-- PROJECTS GRID -->
-          <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10"></div>
-
-        </div>
+    </nav>
+    <div class="md:hidden hidden absolute w-full bg-slate-50 border-b border-slate-200 shadow-lg" id="mobile-menu">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href="#projects"
+          class="mobile-menu-link text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium transition-colors">Projects</a>
+        <a href="#about"
+          class="mobile-menu-link text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium transition-colors">About</a>
       </div>
-
-      <!-- ==========================================
-           TAB 2: MUSIC PLAYER VIEW
-           ========================================== -->
-      <div id="view-music" class="view-section hidden">
-        <div class="main-inner">
-
-          <!-- CHANNEL HERO BANNER -->
-          <div id="channel-hero" class="channel-hero">
-            <div class="hero-backdrop" id="hero-backdrop"></div>
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-              <div class="hero-avatar-wrapper">
-                <img id="hero-avatar" src="https://yt3.googleusercontent.com/uSYMwRJthdK1x-BlZfgtY9aVcNbHDj3weS7OerzI-Z6l6XRaNf_GCJSThSK3lW7C7-HzUNWFbw=s900-c-k-c0x00ffffff-no-rj" alt="Prenik Shah Profile" class="hero-avatar">
-                <span class="live-dot" title="Artist Active"></span>
-              </div>
-              <div class="hero-details">
-                <h1 id="hero-title" class="hero-title">Prenik Shah</h1>
-                <p id="hero-handle" class="hero-handle">@prenikshah</p>
-                <p id="hero-desc" class="hero-desc">Songwriter &amp; Creator, One story at a time</p>
-                
-                <div class="artist-social-links">
-                  <a href="https://open.spotify.com/artist/7yDf2h7TLkEVBR60jArRxV" target="_blank" rel="noopener noreferrer" class="social-btn spotify" title="Listen on Spotify" aria-label="Spotify">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0C5.376 0 0 5.376 0 12s5.376 12 12 12 12-5.376 12-12S18.624 0 12 0zm5.521 17.341c-.218.358-.684.474-1.042.256-2.857-1.746-6.456-2.141-10.692-1.172-.408.093-.815-.162-.908-.57-.093-.408.162-.815.57-.908 4.636-1.06 8.604-.604 11.815 1.352.358.218.474.684.257 1.042zm1.476-3.278c-.274.446-.86.587-1.306.313-3.269-2.008-8.253-2.59-12.12-1.416-.504.153-1.036-.135-1.189-.639-.153-.504.135-1.036.639-1.189 4.417-1.34 9.907-.69 13.663 1.625.446.274.587.86.313 1.306zm.139-3.414c-3.921-2.328-10.384-2.543-14.137-1.403-.615.187-1.264-.165-1.452-.779-.187-.615.165-1.264.779-1.452 4.316-1.31 11.451-1.054 15.962 1.624.554.329.738 1.046.409 1.601-.329.554-1.046.738-1.601.409z"/></svg>
-                  </a>
-                  <a href="https://music.apple.com/in/artist/prenik-shah/6775197500" target="_blank" rel="noopener noreferrer" class="social-btn apple" title="Listen on Apple Music" aria-label="Apple Music">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.85c.66-.8 1.11-1.92.99-3.04-.96.04-2.12.64-2.8 1.44-.61.71-1.14 1.86-1 2.97 1.07.08 2.15-.57 2.81-1.37z"/></svg>
-                  </a>
-                  <a href="https://www.instagram.com/prenikshah" target="_blank" rel="noopener noreferrer" class="social-btn instagram" title="Follow on Instagram" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                  </a>
-                  <a href="https://music.youtube.com/@prenikshah" target="_blank" rel="noopener noreferrer" class="social-btn youtube" title="Listen on YouTube Music" aria-label="YouTube Music">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0C5.376 0 0 5.376 0 12s5.376 12 12 12 12-5.376 12-12S18.624 0 12 0zm0 19.5c-4.136 0-7.5-3.364-7.5-7.5S7.864 4.5 12 4.5s7.5 3.364 7.5 7.5-3.364 7.5-7.5 7.5zm-2.25-10.875v6.75L15.375 12l-5.625-3.375z"/></svg>
-                  </a>
-                </div>
-                
-                <div class="hero-actions">
-                  <button id="play-all-btn" class="btn-play-hero">
-                    <i data-lucide="play" fill="currentColor"></i>
-                    <span>Play All Releases</span>
-                  </button>
-                  <button id="shuffle-channel-btn" class="btn-glass">
-                    <i data-lucide="shuffle"></i>
-                    <span>Shuffle</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- CONTENT SECTION HEADER & SEARCH -->
-          <div class="content-bar">
-            <div class="content-title">
-              <h2 id="content-heading">Musics</h2>
-              <span id="track-count" class="count-badge">0 tracks</span>
-            </div>
-
-            <div class="search-box">
-              <i data-lucide="search" class="search-icon"></i>
-              <input type="text" id="search-input" placeholder="Search releases..." autocomplete="off">
-              <button id="clear-search-btn" class="clear-btn hidden">&times;</button>
-            </div>
-
-            <div class="view-options">
-              <button id="view-list-btn" class="view-btn active" title="List View">
-                <i data-lucide="list"></i>
-              </button>
-              <button id="view-grid-btn" class="view-btn" title="Grid View">
-                <i data-lucide="grid"></i>
-              </button>
-            </div>
-          </div>
-
-          <!-- TRACKS CONTAINER (LIST VIEW BY DEFAULT) -->
-          <div id="tracks-container" class="tracks-grid list-view">
-            <!-- Dynamic Track Items -->
-          </div>
-
-        </div>
-      </div>
-
-    </main>
-
-    <!-- HIDDEN YOUTUBE PLAYER CONTAINER -->
-    <div id="yt-player-wrapper" class="yt-player-wrapper">
-      <div id="youtube-player"></div>
     </div>
+  </header>
 
-    <!-- PERSISTENT FOOTER PLAYER -->
-    <footer class="player-bar">
-      <!-- Visualizer Background Canvas -->
-      <canvas id="visualizer-canvas" class="visualizer-canvas"></canvas>
-
-      <!-- Track Info -->
-      <div class="track-info">
-        <div class="cover-art-wrapper">
-          <img id="player-thumb" src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=120" alt="Track Thumbnail" class="cover-art">
-          <div class="vinyl-overlay" id="vinyl-disc"></div>
+  <main class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Hero Section -->
+    <section id="home" class="py-16 md:py-24">
+      <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+        <div class="flex-shrink-0">
+          <img src="Images/PSLogo.jpg" alt="Prenik Shah"
+            class="w-48 h-48 md:w-60 md:h-60 rounded-full object-cover border-4 border-white shadow-lg">
         </div>
-        <div class="track-meta">
-          <h4 id="player-title" class="track-title">Loading track...</h4>
-          <p id="player-channel" class="track-channel">Prenik Shah</p>
+        <div class="text-center md:text-left">
+          <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-slate-900 mb-4">
+            AR/VR & Interactive Developer
+          </h1>
+          <p class="max-w-3xl text-lg md:text-xl text-slate-600">
+            I'm a passionate Unity developer specializing in XR, game development, and problem-solving. I focus on
+            creating immersive, interactive experiences that bridge the gap between the digital and physical worlds
+            through collaboration and innovation.
+          </p>
         </div>
       </div>
+    </section>
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 md:py-24 bg-white rounded-xl shadow-sm">
+      <div class="text-center mb-12 px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-900">My Work</h2>
+        <p class="mt-2 text-lg text-slate-600">A selection of my projects in AR, VR, and interactive 3D.</p>
+      </div>
+      <div id="project-filters" class="flex justify-center flex-wrap gap-2 mb-12 px-4"></div>
+      <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 px-4 md:px-8"></div>
+    </section>
 
-      <!-- Player Controls & Seekbar -->
-      <div class="player-center">
-        <div class="controls">
-          <button id="btn-shuffle" class="icon-btn" title="Shuffle">
-            <i data-lucide="shuffle"></i>
-          </button>
-          <button id="btn-prev" class="icon-btn" title="Previous">
-            <i data-lucide="skip-back"></i>
-          </button>
-          <button id="btn-play-pause" class="btn-play-main" title="Play / Pause">
-            <i data-lucide="play" id="play-icon" fill="currentColor"></i>
-          </button>
-          <button id="btn-next" class="icon-btn" title="Next">
-            <i data-lucide="skip-forward"></i>
-          </button>
-          <button id="btn-repeat" class="icon-btn" title="Repeat Mode">
-            <i data-lucide="repeat"></i>
-          </button>
-        </div>
-
-        <div class="progress-container">
-          <span id="time-current" class="time-stamp">0:00</span>
-          <div class="progress-bar-wrapper" id="progress-bar">
-            <div id="progress-fill" class="progress-fill" style="width: 0%;"></div>
-            <div id="progress-handle" class="progress-handle" style="left: 0%;"></div>
+    <!-- About Section -->
+    <section id="about" class="py-16 md:py-24">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-900">About Me</h2>
+      </div>
+      <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-sm border border-slate-200 p-8 md:p-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+          <div class="md:col-span-2">
+            <h3 class="text-2xl font-bold text-slate-800 mb-4">Prenik Shah</h3>
+            <p class="text-slate-600 leading-relaxed">
+              As a seasoned Unity developer, I thrive on challenges and am constantly exploring new technologies in the
+              AR/VR space. My goal is to craft meaningful and memorable interactive applications. I have a strong
+              foundation in C#, 3D mathematics, and performance optimization for a wide range of devices.
+            </p>
           </div>
-          <span id="time-total" class="time-stamp">0:00</span>
+          <div class="space-y-4">
+            <div>
+              <h4 class="font-semibold text-slate-800">Designation</h4>
+              <p class="text-slate-600">Unity Developer - Plutomen</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-slate-800">Email</h4>
+              <a href="mailto:shahprenik@gmail.com" class="text-indigo-600 hover:underline">shahprenik@gmail.com</a>
+            </div>
+            <div>
+              <h4 class="font-semibold text-slate-800">Contact</h4>
+              <a href="tel:+919409419734" class="text-indigo-600 hover:underline">+91 9409419734</a>
+            </div>
+          </div>
+        </div>
+        <div class="mt-8 border-t border-slate-200 pt-8 flex flex-col items-center gap-6">
+          <div class="flex items-center gap-6">
+            <a href="https://github.com/prenikshah/" target="_blank" rel="noopener noreferrer"
+              class="text-slate-500 hover:text-indigo-600 transition-colors" aria-label="GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                </path>
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/prenikshah" target="_blank" rel="noopener noreferrer"
+              class="text-slate-500 hover:text-indigo-600 transition-colors" aria-label="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            <a href="https://www.youtube.com/@psgaming09" target="_blank" rel="noopener noreferrer"
+              class="text-slate-500 hover:text-indigo-600 transition-colors" aria-label="YouTube">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+                <path
+                  d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                </path>
+                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
+    </section>
+  </main>
 
-      <!-- Extra Controls (Volume Icon + Slider Together on Right) -->
-      <div class="player-extra">
-        <div class="volume-container">
-          <button id="btn-mute" class="icon-btn" title="Toggle Mute">
-            <i data-lucide="volume-2" id="volume-icon"></i>
-          </button>
-          <input type="range" id="volume-slider" min="0" max="100" value="80" class="volume-slider">
-        </div>
-      </div>
-    </footer>
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 mt-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-slate-500">
+      <p>&copy; 2024 Prenik Shah. All rights reserved.</p>
+    </div>
+  </footer>
 
-  </div>
-
-  <!-- Video Modal for Portfolio -->
-  <div id="video-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50 p-4" role="dialog" aria-modal="true">
+  <!-- Video Modal -->
+  <div id="video-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50 p-4"
+    role="dialog" aria-modal="true">
     <div id="video-modal-content" class="relative bg-black rounded-lg w-full max-w-4xl max-h-full overflow-hidden">
-      <button id="video-modal-close" class="absolute top-2 right-2 bg-white/20 text-white rounded-full p-2 hover:bg-white/40 transition-colors" aria-label="Close video player">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <!-- iframe will be injected here dynamically -->
+      <button id="video-modal-close"
+        class="absolute top-2 right-2 bg-white/20 text-white rounded-full p-2 hover:bg-white/40 transition-colors"
+        aria-label="Close video player">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
     </div>
   </div>
 
+
+
+  <script type="module">
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // --- DATA ---
+      const PROJECTS = [
+        {
+          title: 'Olympic 10m air pistol shooting VR experience',
+          description: 'Experience realistic Olympic-style 10m pistol VR training with smart performance tracking and a personalized dashboard — perfect for professional training, focused practice, and precision shooting.',
+          imageUrl: 'Images/ShootingVR.jpg',
+          tags: ['VR', 'Meta Quest', 'Games'],
+          videoUrl: 'https://youtu.be/h-JLuCEEtHU?si=tvhIjINT0EMu8aTX'
+        },
+        /*{
+          title: 'Defense Truck Engine - Yantra Kosh Indian Army',
+          description: 'A detailed 3D representation of a defense truck engine, developed for the Indian Army, showcasing all assemblies with interactive technical information for each part.',
+          imageUrl: 'Images/YantraKosh.png',
+          tags: ['Smart TV', 'Windows', 'Interactive'],
+          videoUrl: 'https://youtu.be/7S_61mSGG5g'
+        },*/
+        {
+          title: 'Plutomen Assist',
+          description: 'Plutomen Assist is an AR-powered remote support solution that streamlines manual work processes across industries. It enables users to create custom training modules, access insights anytime, and leverage pre-built knowledge repositories to simplify tasks like assembly, QA, and employee training.',
+          imageUrl: 'Images/AssistEditor.png',
+          tags: ['Interactive', 'AR', 'VR', 'Standalone', 'Android', 'iOS', 'Web', 'Meta Quest'],
+          videoUrl: 'https://youtu.be/9OzIareZEuU'
+        },
+        {
+          title: 'Digital Data Center Configuration - Wipro',
+          description: 'The system allows select different rack, server, storage and switch and can entirely customize it as per their requirement where the relevant information are provided for each selection done. Once the entire configuration is done, the billing details list is then showcased to the user for the purchase to be done.',
+          imageUrl: 'Images/DataCenter.jpg',
+          tags: ['Standalone', 'Android', 'iOS', 'VR', 'Interactive'],
+          videoUrl: 'https://www.youtube.com/watch?v=4vvpnslvdgU'
+        },
+        {
+          title: 'Digital Interactive Manual -  Milacron',
+          description: 'The Machine application allows users to view machines in AR 3D, explore assembly animations, and access detailed part information in an interactive real-world environment.',
+          imageUrl: 'Images/Milacron.png',
+          tags: ['AR', 'Web', 'Interactive'],
+          videoUrl: 'https://youtu.be/ynyM9TNmKGE'
+        },
+        {
+          title: 'AbilityVR - XR Design Challenge',
+          description: 'AbilityVR is a Virtual Reality-based training solution that revolutionizes orientation and mobility learning for individuals who are blind or visually impaired. By recreating realistic environments with spatial audio, it offers a safe, immersive space to practice navigation skills and build confidence. https://devpost.com/software/abilityvr',
+          imageUrl: 'Images/AbilityVR.jpg',
+          tags: ['VR', 'Meta Quest'],
+          videoUrl: 'https://youtu.be/esI4W6fzyvg?si=VVedsu0SfA6jpGmA'
+        },
+        {
+          title: 'Water Motor Pump Marker-Based Training and Maintenance',
+          description: 'An interactive AR training tool that allows users to explore and maintain water motor pump systems using marker, surface, and interactive modes.',
+          imageUrl: 'Images/WaterPump.png',
+          tags: ['Android', 'iOS', 'RealWear', 'AR'],
+          videoUrl: 'https://youtube.com/shorts/dVsIYb_uh34'
+        },
+        {
+          title: 'Fashion Planogram',
+          description: 'A simple visual merchandising tool for retail that helps design and manage clothing displays on rails, tables, and walls. After creating the configurator, the final product layout can be exported as a PDF.',
+          imageUrl: 'Images/FashionPlanogram.png',
+          tags: ['Standalone', 'Interactive'],
+          videoUrl: 'https://youtu.be/0y47vV0_Lg0'
+        },
+        {
+          title: 'Digital Interactive Training Manual - Adani Electricity',
+          description: 'Explore a comprehensive application where a main model is divided into sections, each featuring step-by-step animation processes, allowing users to easily navigate and understand complex systems.',
+          imageUrl: 'Images/AdaniElectricity.png',
+          tags: ['Web', 'Android', 'iOS', 'AR'],
+          videoUrl: 'https://youtu.be/yEzEBBSYF54'
+        },
+        {
+          title: 'Fuse Replacement VR Training Simulation - Adani',
+          description: 'Fuse replacement training is a VR interactive program where users can move around an environment, interact with objects, and complete hands-on training for replacing a damaged fuse.',
+          imageUrl: 'Images/AdaniVR.jpg',
+          tags: ['Oculus Rift', 'Meta Quest', 'VR'],
+          videoUrl: 'https://www.youtube.com/watch?v=Wx-5uTgfQho'
+        },
+        {
+          title: 'Blood Pressure Meter - CareAR',
+          description: 'For the Healthcare sector, an application was developed that can render instructions on using a blood pressure monitor into AR, making it easier to learn how to use them.  This was specifically developed for senior citizens hence the use of elements was done accordingly.',
+          imageUrl: 'Images/BPMeter.jpg',
+          tags: ['iOS', 'Android', 'AR'],
+          videoUrl: 'https://www.youtube.com/watch?v=QFfsTeCtHl0'
+        },
+        {
+          title: 'Project 4D - Story Mode Puzzle Game',
+          description: 'This game follows Ken, a young man who gains the ability to manipulate time through the Butterfly Effect to uncover the mystery behind his brother Bennet’s disappearance. Players solve puzzles by altering past events and controlling spatial elements to explore alternate realities. Every action influences future outcomes, creating a dynamic and emotionally driven narrative experience.',
+          imageUrl: 'Images/Project4d.jpg',
+          tags: ['Standalone', 'Games'],
+          videoUrl: 'https://youtu.be/qCzuEHEgrc8?si=rq2COccVqyjISmDP'
+        },
+        {
+          title: 'Pirate Rush - Runner Game',
+          description: 'Pirate Rush is a web-based endless runner game where players navigate a pirate through obstacles while collecting coins and treasures. Developed using Unity WebGL, the game delivers a fast-paced, interactive experience directly in the browser.',
+          imageUrl: 'Images/PirateRush.png',
+          tags: ['Web', 'Games'],
+          videoUrl: 'https://youtube.com/shorts/PHx97lycUyQ'
+        },
+        {
+          title: 'VNotes - Plutomen',
+          description: 'Augmented Reality (AR) based app that enables you to tag notes as texts, images, and videos in the real environment virtually. Users can save, load task and map additionally they can assign the map or tasks to another user.',
+          imageUrl: 'Images/Vnotes.jpg',
+          tags: ['iOS', 'AR'],
+          videoUrl: 'https://youtu.be/nMHy_VNGA8I?si=2m7pG4iP1Y5uNjoe'
+        },
+        {
+          title: 'AR based GIS Mapping - Plutomen',
+          description: 'Import and overlay GeoJson data from GIS onto an augmented reality map, enabling the visualization of geospatial information in real-world surroundings for enhanced situational awareness and analysis.',
+          imageUrl: 'Images/GISData.png',
+          tags: ['iOS', 'Android', 'AR'],
+          videoUrl: 'https://youtube.com/shorts/iIYrsVySiMU'
+        },
+        {
+          title: 'EVO CUBE - A Challenging Cube Evolution Puzzle',
+          description: 'Control a shape-shifting cube, shrink or evolve it by interacting with special platform zones, and fit it perfectly into the highlighted wall area to progress! Sounds simple? Think again! The challenges become trickier as you advance.',
+          imageUrl: 'Images/EvoCube.jpg',
+          tags: ['Web', 'Games'],
+          videoUrl: 'https://youtu.be/Vbk2GN8BDkk?si=qCTMfvGh-LAGEAy_'
+        },
+        {
+          title: 'Local Treasure Quest - A Location-Based AR Game',
+          description: 'Turns your surroundings into an interactive treasure hunt. Built with Unity, AR Foundation, and Google Maps API, it lets players solve puzzles, discover hidden rewards, and explore real-world locations through augmented reality. The project blends virtual gameplay with real environments to create fun, community-driven adventures.',
+          imageUrl: 'Images/LocalTreasureQuest.jpg',
+          tags: ['AR', 'Games'],
+          videoUrl: 'https://youtube.com/shorts/hRE-1L-mVJg?si=U9EGW0TcxhaB7uxX'
+        },
+        {
+          title: 'Poem Pop AR  - Google AI Hackathon',
+          description: 'Poem Pop AR is an application that combines Gemini AI-generated poetry with augmented reality gameplay. Users can generate a unique poem using Gemini AI, and then collect words scattered in the AR environment using their devices camera. And collect as many words as possible before time runs out.',
+          imageUrl: 'Images/PoemPop.jpg',
+          tags: ['AR', 'Android', 'Games'],
+          videoUrl: 'https://youtu.be/_RPW1CeGqsw?si=_nBeVEHPu_rCHSz6'
+        },
+        {
+          title: 'AllSol All Problems One Solution  - Google AI Hackathon',
+          description: 'AllSol is a one-stop solution-finding application designed to streamline the process of solving problems through images. Users can easily upload images from their devices, utilize intuitive annotation tools for better context, and benefit from Gemini AI-powered solution matching.',
+          imageUrl: 'Images/AllSol.jpg',
+          tags: ['AR', 'Web', 'Android', 'iOS'],
+          videoUrl: 'https://youtu.be/glGw4ugtLeY?si=jlSyvPFpysA7UTKN'
+        },
+
+      ];
+      const FILTERS = ['ALL', 'AR', 'VR', 'Games', 'Interactive'];
+
+      // --- STATE ---
+      let activeFilter = 'ALL';
+      let isMenuOpen = false;
+
+      // --- DOM ELEMENTS ---
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuIconOpen = document.getElementById('menu-icon-open');
+      const menuIconClose = document.getElementById('menu-icon-close');
+      const projectsGrid = document.getElementById('projects-grid');
+      const projectFiltersContainer = document.getElementById('project-filters');
+      const videoModal = document.getElementById('video-modal');
+      const videoPlayer = document.getElementById('video-player');
+      const videoModalClose = document.getElementById('video-modal-close');
+
+      // --- HEADER LOGIC ---
+      function toggleMobileMenu() {
+        isMenuOpen = !isMenuOpen;
+        mobileMenu.classList.toggle('hidden', !isMenuOpen);
+        menuIconOpen.classList.toggle('hidden', isMenuOpen);
+        menuIconClose.classList.toggle('hidden', !isMenuOpen);
+        mobileMenuButton.setAttribute('aria-expanded', isMenuOpen);
+      }
+
+      mobileMenuButton.addEventListener('click', toggleMobileMenu);
+      document.querySelectorAll('.mobile-menu-link').forEach(link => {
+        link.addEventListener('click', () => {
+          if (isMenuOpen) {
+            toggleMobileMenu();
+          }
+        });
+      });
+
+      // --- PROJECTS LOGIC ---
+      function renderProjects() {
+        projectsGrid.innerHTML = '';
+        const filteredProjects = activeFilter === 'ALL'
+          ? PROJECTS
+          : PROJECTS.filter(p => p.tags.some(tag => tag.toLowerCase() === activeFilter.toLowerCase()));
+
+        filteredProjects.forEach(project => {
+          const isPlayable = !!project.videoUrl;
+          const projectCardHTML = `
+              <div class="group rounded-lg overflow-hidden border border-slate-200 hover:shadow-xl transition-shadow duration-300 bg-white">
+                <button data-video-url="${project.videoUrl || ''}" class="project-play-button w-full text-left ${isPlayable ? 'cursor-pointer' : 'cursor-default'}" aria-label="Play video for ${project.title}">
+                  <div class="relative overflow-hidden">
+                    <img src="${project.imageUrl}" alt="${project.title}" class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300">
+                    ${isPlayable ? `
+                      <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all flex justify-center items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-16 h-16 text-white opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 transition-all duration-300">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm14.024-.983a1.125 1.125 0 010 1.966l-5.603 3.113A1.125 1.125 0 019 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113z" clip-rule="evenodd"></path>
+                        </svg>
+                      </div>` : ''}
+                  </div>
+                </button>
+                <div class="p-6">
+                  <h3 class="text-xl font-semibold text-slate-800 mb-2">${project.title}</h3>
+                  <p class="text-slate-600 mb-4">${project.description}</p>
+                  <div class="flex flex-wrap gap-2">
+                    ${project.tags.map(tag => `<span class="bg-indigo-100 text-indigo-700 text-xs font-medium px-2.5 py-1 rounded-full">${tag}</span>`).join('')}
+                  </div>
+                </div>
+              </div>`;
+          projectsGrid.insertAdjacentHTML('beforeend', projectCardHTML);
+        });
+      }
+
+      function renderFilters() {
+        projectFiltersContainer.innerHTML = FILTERS.map(filter => `
+                <button data-filter="${filter}" class="filter-button px-4 py-2 rounded-full text-sm font-semibold transition-colors duration-300 ${activeFilter === filter ? 'bg-indigo-600 text-white shadow' : 'bg-white text-slate-600 hover:bg-indigo-50 border border-slate-200'}">
+                    ${filter}
+                </button>
+            `).join('');
+      }
+
+      projectFiltersContainer.addEventListener('click', e => {
+        const target = e.target.closest('.filter-button');
+        if (!target) return;
+        activeFilter = target.dataset.filter;
+        renderFilters();
+        renderProjects();
+      });
+
+
+      // --- VIDEO MODAL LOGIC ---
+      function openVideoModal() {
+        // videoPlayer.src = url;
+        videoModal.classList.remove('hidden');
+      }
+
+      function closeVideoModal() {
+        const iframe = videoModal.querySelector('iframe');
+        if (iframe) iframe.src = ""; // stop the video
+        videoModal.classList.add('hidden');
+      }
+
+
+      videoModal.addEventListener('click', closeVideoModal);
+      videoModalClose.addEventListener('click', closeVideoModal);
+      document.getElementById('video-modal-content').addEventListener('click', e => e.stopPropagation());
+
+      projectsGrid.addEventListener('click', e => {
+        const playButton = e.target.closest('.project-play-button');
+        if (!playButton || !playButton.dataset.videoUrl) return;
+
+        let videoUrl = playButton.dataset.videoUrl;
+
+        // Convert YouTube links to embed + autoplay
+        if (
+          videoUrl.includes("youtube.com/watch") ||
+          videoUrl.includes("youtu.be") ||
+          videoUrl.includes("youtube.com/shorts")
+        ) {
+          const match = videoUrl.match(/(?:v=|\/)([a-zA-Z0-9_-]{11})/);
+          if (match) videoUrl = `https://www.youtube.com/embed/${match[1]}?autoplay=1`;
+        }
+
+        // Set iframe in the modal
+        const iframe = document.createElement('iframe');
+        iframe.src = videoUrl;
+        iframe.width = "100%";
+        iframe.height = "450px";
+        iframe.allow = "autoplay; encrypted-media";
+        iframe.allowFullscreen = true;
+        iframe.style.border = "none";
+
+        // Clear old iframe if any
+        const modalContent = document.getElementById('video-modal-content');
+        const oldIframe = modalContent.querySelector('iframe');
+        if (oldIframe) oldIframe.remove();
+
+        // Append new iframe to modal
+        modalContent.prepend(iframe);
+
+        // Show modal
+        videoModal.classList.remove('hidden');
+      });
+
+
+      // --- INITIAL RENDER ---
+      renderFilters();
+      renderProjects();
+      document.querySelector('footer p').innerHTML = `&copy; ${new Date().getFullYear()} Prenik Shah. All rights reserved.`;
+    });
+  </script>
 </body>
+
 </html>
